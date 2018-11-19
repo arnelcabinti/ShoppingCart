@@ -9,9 +9,6 @@ const expect = chai.expect;
 const assert = chai.assert;
 const sandbox = sinon.createSandbox();
 
-
-
-
 describe("Utils", () => {
 
     let prices,
@@ -37,7 +34,6 @@ describe("Utils", () => {
     });
 
     it("should return array ojects", (done) => {
-        var productsClass = new app.Products();
         assert.isFunction(prices, 'This is a function')
         assert.isArray(prices());
         done();
@@ -70,21 +66,20 @@ describe("Utils", () => {
             ]);
             
         shopClass.add('ult_small');
-        shopClass.add('ult_medium');
         shopClass.add('ult_large');
         shopClass.add('ult_medium','I<3AMAYSIM');
-
+        
         assert(spy.withArgs('ult_small').calledOnce);
-        assert(spy.withArgs('ult_medium').calledOnce);
         assert(spy.withArgs('ult_large').calledOnce);
         assert(spy.withArgs('ult_medium','I<3AMAYSIM').calledOnce);
 
         done();
         
     });
-
+    
     it("should total shopping cart", (done) => {
-        var spy = shopAddSpy;
+        var spy = shopTotalSpy;
+
         var shopClass = new app.ShoppingCart([
                 {
                     productCode : 'ult_small',
@@ -107,9 +102,15 @@ describe("Utils", () => {
                     price : 44.90
                 },
             ]);
-            
+        
+        shopClass.add('ult_small');
+        shopClass.add('ult_large');
+        shopClass.add('ult_large');
+        shopClass.add('ult_large');
+        shopClass.add('ult_large');
+        shopClass.add('ult_medium','I<3AMAYSIM');
         shopClass.total();
-        expect(spy.calledOnce)
+        assert(spy.calledOnce);
         done();
     });
 });

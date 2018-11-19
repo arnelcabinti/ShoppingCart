@@ -5,7 +5,7 @@
 class Utils {
 
     constructor(){}
-
+    // utils to find item. Used for repeting instances
     find(list,findKeyName,compairingValue){
         for(let i = 0; i < list.length ; i++){
             let item = list[i];
@@ -17,7 +17,6 @@ class Utils {
         }
     }
 }
-
 
 class Products {
 
@@ -46,36 +45,10 @@ class Products {
         ];
     }
 
-    
+    // return products
     priceRules(){
         return this.products;
     }
-
-    // add(item){ 
-    //     this.products.push(item);
-    // }
-
-    // updatePrice(code,newPrice){
-
-    //     let currentProducts = this.products;
-
-    //     for(let i = 0 ; i < currentProducts.length; i++){
-    //         let item = currentProducts[i];
-        
-    //         if(item.productCode === code){
-    //             item.price = newPrice;
-    //             currentProducts[i] = item;
-    //             console.log('Finish');
-    //             return;
-    //         }
-    //         console.log('on-going');
-    //     }
-
-    //     Promise.all(currentProducts)
-    //     .then((resutls) => {
-    //         this.products = resutls;
-    //     })
-    // }
 
 }
 
@@ -88,6 +61,7 @@ class ShoppingCart {
         this.countUtlLarge = 0;
     }
 
+    // Add item with promo code in the cart
     add(itemCode,promoCode){
         let items = this.products,
             cart = this.cart;
@@ -150,7 +124,7 @@ class ShoppingCart {
         let subTotal = 0,
             total = 0,
             hasPromoCode = false;
-
+        
         for(let i = 0; i < this.cart.length ; i++){
             let item = this.cart[i];
             
@@ -183,7 +157,7 @@ class ShoppingCart {
         }
         return 0;
     }
-
+    
     computeBulkDiscount(){
         let utils = new Utils(),
             findLarge = utils.find(this.products,'productCode','ult_large'),
@@ -204,11 +178,9 @@ const main = () => {
 
     let priceRules = products.priceRules();
 
-
     let cart = new ShoppingCart(priceRules);
 
-
-    // scena
+    // scenario 1
     cart.add('ult_small');
     cart.add('ult_small');
     cart.add('ult_small');
@@ -217,30 +189,30 @@ const main = () => {
     cart.items();
     cart.clear();
 
-    // // scenario 2
-    // cart.add('ult_small');
-    // cart.add('ult_small');
-    // cart.add('ult_large');
-    // cart.add('ult_large');
-    // cart.add('ult_large');
-    // cart.add('ult_large');
-    // cart.total();
-    // cart.items();
-    // cart.clear();
+    // scenario 2
+    cart.add('ult_small');
+    cart.add('ult_small');
+    cart.add('ult_large');
+    cart.add('ult_large');
+    cart.add('ult_large');
+    cart.add('ult_large');
+    cart.total();
+    cart.items();
+    cart.clear();
 
-    // // scenario 3
-    // cart.add('ult_small');
-    // cart.add('ult_medium');
-    // cart.add('ult_medium');
-    // cart.total();
-    // cart.items();
-    // cart.clear();
+    // scenario 3
+    cart.add('ult_small');
+    cart.add('ult_medium');
+    cart.add('ult_medium');
+    cart.total();
+    cart.items();
+    cart.clear();
 
-    // // scenario 4
-    // cart.add('ult_small');
-    // cart.add('1gb','I<3AMAYSIM');
-    // cart.total();
-    // cart.items();
+    // scenario 4
+    cart.add('ult_small');
+    cart.add('1gb','I<3AMAYSIM');
+    cart.total();
+    cart.items();
 }
 
 main();

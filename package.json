@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start" : "node app.js",
     "test": "nyc mocha \"test/**/*.js\" --reporter mocha-junit-reporter --timeout 3000 --reporter-options mochaFile=./test_xml/shopcart.xml --exit"
   },
   "author": "",
