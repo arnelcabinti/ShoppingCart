@@ -1,9 +1,9 @@
 # Amaysim Shopping Cart
-A shopping cart program for technical excercise using javascript.
+A shopping cart program for technical exercise using javascript.
 
 # Installation
 
-This program needs to have nodejs intalled. If you don't have nodejs, please follow the instructions from the provided link below.
+This program needs to have nodejs installed. If you don't have nodejs, please follow the instructions from the provided link below.
 
 ```
 https://nodejs.org/en/download/current/

@@ -3,7 +3,6 @@
 
 const app = require('../app');
 const sinon = require('sinon');
-const sinonTest = require('sinon-test');
 const chai = require('chai');
 const expect = chai.expect;
 const assert = chai.assert;
